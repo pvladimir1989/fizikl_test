@@ -1,0 +1,33 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Title</title>#}
+{#</head>#}
+{#<body>#}
+{##}
+{#</body>#}
+{#</html>#}
+
+<div class="widget">
+    <div class="widget-heading clearfix">
+      <h3 class="widget-title pull-left list-inline">CSV </h3>
+      <button type="button" class="btn btn-primary pull-right"><i class="ti-upload mr-5"></i> Upload</button>
+    </div>
+    <div class="widget-body">
+      <form id="type-dz" class="dropzone">{% csrf_token %}</form>
+    </div>
+</div>
+
+{% block js %}
+<script type="text/javascript">
+    $("#type-dz").dropzone({
+        url: "{% url 'api_import:file' %}",
+        paramName: "file",
+        acceptedFiles: ".csv",
+        maxFilesize: 2,
+        maxThumbnailFilesize: .5,
+        dictDefaultMessage: "<i class='icon-dz fa fa-file-text-o'></i>Drop files here to upload"
+});
+</script>
+{% endblock %}
