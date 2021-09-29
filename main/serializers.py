@@ -1,9 +1,14 @@
-from rest_framework import serializers
+from rest_framework.serializers import ModelSerializer
 from .models import ImageUpload
 
 
-class ImportImageSerializer(serializers.Serializer):
+class ImportImageSerializer(ModelSerializer):
     class Meta:
         model = ImageUpload
-        fields = '__all__'
+        fields = ('title', 'image', 'date_uploaded')
         # file = serializers.FileField()
+
+    def save(self, *args, **kwargs):
+        if self.instance.image:
+            self.instance.avatar.delete()
+        return super().save(*args, **kwargs)

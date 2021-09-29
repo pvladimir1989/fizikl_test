@@ -1,3 +1,9 @@
 from django.contrib import admin
+from django.contrib.admin import ModelAdmin
 
-# Register your models here.
+from main.models import ImageUpload
+
+
+@admin.register(ImageUpload)
+class BookAdmin(ModelAdmin):
+    pass
