@@ -13,3 +13,8 @@
 нужно запустить проект на любом бесплатном хостинге (например https://www.pythonanywhere.com/
 код должен лежать на github.com
 
+## Ссылки
+- https://vladimir89.pythonanywhere.com/ (загрузка картинки)
+- https://vladimir89.pythonanywhere.com/admin (login: admin, password: 123)
+- https://vladimir89.pythonanywhere.com/upload/ (api endpoint для загрузки)
+
