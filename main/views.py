@@ -1,29 +1,14 @@
-from rest_framework.views import APIView,Response
-from rest_framework.parsers import MultiPartParser,FormParser
-
-from rest_framework import viewsets
-
-from .serializers import ImportImageSerializer
+from django.views.generic import TemplateView
+from rest_framework.generics import CreateAPIView
 
 from main.models import ImageUpload
 from main.serializers import ImportImageSerializer
 
 
-# class FileImportView(APIView):
-#     parser_classes = (MultiPartParser, FormParser,)
-#     serializer = ImportImageSerializer
-#
-#     def post(self, request, format=None):
-#         upload = self.serializer(data=request.FILES)
-#
-#         if upload.is_valid():
-#             file = ImageUpload(image=upload.validated_data['api_import'], uploaded_by=request.user.profile)
-#             file.save()
-#             return Response({'success': 'Imported successfully'})
-#         else:
-#             return Response(upload.errors, status=400)
-
-
-class FileImportViewSet(viewsets.ModelViewSet):
+class ImageCreateView(CreateAPIView):
     queryset = ImageUpload.objects.all()
     serializer_class = ImportImageSerializer
+
+
+class ImageView(TemplateView):
+    template_name = 'main.html'

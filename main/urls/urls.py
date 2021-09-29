@@ -1,12 +1,10 @@
+from django.urls import path
 from django.contrib import admin
-from django.urls import path, include
-from django.views.generic import TemplateView
 
-from main.urls import api
+from main import views
 
 urlpatterns = [
-    # path('api/import/', include(api)),
+    path('', views.ImageView.as_view()),
+    path('upload/', views.ImageCreateView.as_view(), name='upload'),
     path('admin/', admin.site.urls),
-    path('',TemplateView.as_view(template_name='main.html'))
-
 ]

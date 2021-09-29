@@ -1,9 +1,8 @@
-from rest_framework import serializers
+from rest_framework.serializers import ModelSerializer
 from .models import ImageUpload
 
 
-class ImportImageSerializer(serializers.Serializer):
+class ImportImageSerializer(ModelSerializer):
     class Meta:
         model = ImageUpload
         fields = '__all__'
-        # file = serializers.FileField()

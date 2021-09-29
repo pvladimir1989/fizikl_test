@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from main.models import ImageUpload
+
+
+@admin.register(ImageUpload)
+class ImageAdmin(admin.ModelAdmin):
+    list_display = ('file',)
